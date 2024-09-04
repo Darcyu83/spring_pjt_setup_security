@@ -2,7 +2,6 @@ package com.yuds.spring_yuds.security;
 
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -20,11 +20,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @Log4j2
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfigBasic {
 
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http ) throws Exception{
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
     //! 모든 접근 허용
 //    http.authorizeHttpRequests(requests -> requests.anyRequest().permitAll());
@@ -35,7 +35,7 @@ public class SecurityConfig {
             formLogin
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/" , true));
+                .defaultSuccessUrl("/", true));
 
     // url별 사용자 권한 체크
 //    http.authorizeHttpRequests(requests
@@ -51,9 +51,6 @@ public class SecurityConfig {
 //            .defaultSuccessUrl("/", true)
 //        );
 
-
-
-
     return http.build();
   }
 
@@ -65,8 +62,8 @@ public class SecurityConfig {
 
 
   @Bean
-  public PasswordEncoder passwordEncoder(){
-    return NoOpPasswordEncoder.getInstance();
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
   }
 
 }
