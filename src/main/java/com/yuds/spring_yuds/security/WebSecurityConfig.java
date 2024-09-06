@@ -1,9 +1,8 @@
 package com.yuds.spring_yuds.security;
 
-import com.yuds.spring_yuds.service.UserService;
+import com.yuds.spring_yuds.employee.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.filters.CorsFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

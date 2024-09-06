@@ -16,14 +16,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
-@Configuration
+//@EnableWebSecurity
+//@Configuration
 @Log4j2
 @RequiredArgsConstructor
 public class SecurityConfigBasic {
 
 
-  @Bean
+  //  @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
     //! 모든 접근 허용
@@ -54,14 +54,14 @@ public class SecurityConfigBasic {
     return http.build();
   }
 
-  @Bean
+  //  @Bean
   public UserDetailsService userDetailsService() {
     UserDetails user = User.builder().username("yuds").password("1234").roles("user").build();
     return new InMemoryUserDetailsManager(user);
   }
 
 
-  @Bean
+  //  @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }

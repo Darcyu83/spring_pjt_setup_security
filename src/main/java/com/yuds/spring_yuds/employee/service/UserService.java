@@ -1,4 +1,4 @@
-package com.yuds.spring_yuds.service;
+package com.yuds.spring_yuds.employee.service;
 
 
 import lombok.NoArgsConstructor;
